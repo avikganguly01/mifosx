@@ -1,6 +1,7 @@
 package org.mifosplatform.infrastructure.hooks;
 
 import org.mifosplatform.commands.handler.CommandHook;
+import org.mifosplatform.infrastructure.codehooks.CommandHookResult;
 import org.mifosplatform.infrastructure.core.api.JsonCommand;
 import org.mifosplatform.infrastructure.core.data.CommandProcessingResult;
 

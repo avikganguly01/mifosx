@@ -25,6 +25,8 @@ apply plugin: 'idea'
 apply plugin: 'tomcat'
 apply plugin: 'project-report'
 
+apply plugin: 'maven'
+
 /* define the valid syntax level for source files */
 sourceCompatibility = JavaVersion.VERSION_1_7
 /* define binary compatibility version */
@@ -410,4 +412,39 @@ springBoot {
 }
 bootRepackage {
     mainClass = 'org.mifosplatform.ServerWithMariaDB4jApplication'
+}
+
+jar {
+    exclude('META-INF/spring/') 
+    exclude('META-INF/*.xml') 
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from 'build/docs/javadoc'
+}
+ 
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+artifacts {
+    		archives jar
+}
+
+install {
+    repositories.mavenInstaller {
+    	addFilter('jar') {artifact, file ->
+            artifact.ext == 'jar'
+        }
+        pom('jar').artifactId = 'mifosng-provider'
+        pom('jar').project {
+          parent { 
+            groupId 'org.springframework.boot'
+            artifactId 'spring-boot-starter-parent'
+            version "$springBootVersion"
+          }
+        }
+    }
 }

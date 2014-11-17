@@ -4,8 +4,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mifosplatform.infrastructure.codehooks.CommandHookProvider;
+import org.mifosplatform.infrastructure.codehooks.CommandHookRegistry;
+import org.mifosplatform.infrastructure.codehooks.CommandHookType;
 import org.mifosplatform.infrastructure.core.api.JsonCommand;
 import org.mifosplatform.infrastructure.core.data.CommandProcessingResult;
 import org.mifosplatform.infrastructure.core.exception.GeneralPlatformDomainRuleException;

@@ -27,7 +27,8 @@ import org.springframework.context.annotation.ImportResource;
  */
 @Configuration
 @Import({ WebXmlConfiguration.class })
-@ImportResource({ "classpath*:META-INF/spring/appContext.xml" })
+@ImportResource({ "classpath*:META-INF/spring/appContext.xml",
+				  "classpath*:META-INF/*Context.xml" })
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class,
 		HibernateJpaAutoConfiguration.class,
 		DataSourceTransactionManagerAutoConfiguration.class,

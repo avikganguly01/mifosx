@@ -1,4 +1,4 @@
-package org.mifosplatform.infrastructure.hooks;
+package org.mifosplatform.infrastructure.codehooks;
 
 
 import com.google.common.collect.ArrayListMultimap;

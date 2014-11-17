@@ -1,4 +1,4 @@
-package org.mifosplatform.infrastructure.hooks;
+package org.mifosplatform.infrastructure.codehooks;
 
 public enum CommandHookType {
     AcceptClientTransfer,

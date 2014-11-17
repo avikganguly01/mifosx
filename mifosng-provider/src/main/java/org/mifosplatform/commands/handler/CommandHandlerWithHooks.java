@@ -1,12 +1,12 @@
 package org.mifosplatform.commands.handler;
 
+import org.mifosplatform.infrastructure.codehooks.CommandHookRegistry;
+import org.mifosplatform.infrastructure.codehooks.CommandHookResult;
+import org.mifosplatform.infrastructure.codehooks.CommandHookType;
+import org.mifosplatform.infrastructure.codehooks.ResolvedHook;
 import org.mifosplatform.infrastructure.core.api.JsonCommand;
 import org.mifosplatform.infrastructure.core.data.CommandProcessingResult;
 import org.mifosplatform.infrastructure.core.exception.GeneralPlatformDomainRuleException;
-import org.mifosplatform.infrastructure.hooks.CommandHookRegistry;
-import org.mifosplatform.infrastructure.hooks.CommandHookResult;
-import org.mifosplatform.infrastructure.hooks.CommandHookType;
-import org.mifosplatform.infrastructure.hooks.ResolvedHook;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

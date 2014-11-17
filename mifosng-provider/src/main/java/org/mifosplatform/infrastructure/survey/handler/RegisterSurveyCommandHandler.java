@@ -6,9 +6,9 @@
 package org.mifosplatform.infrastructure.survey.handler;
 
 import org.mifosplatform.commands.handler.CommandHandlerWithHooks;
+import org.mifosplatform.infrastructure.codehooks.CommandHookType;
 import org.mifosplatform.infrastructure.core.api.JsonCommand;
 import org.mifosplatform.infrastructure.core.data.CommandProcessingResult;
-import org.mifosplatform.infrastructure.hooks.CommandHookType;
 import org.mifosplatform.infrastructure.survey.service.WriteSurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

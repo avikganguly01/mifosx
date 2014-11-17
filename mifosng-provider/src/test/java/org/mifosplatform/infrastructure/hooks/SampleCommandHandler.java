@@ -1,6 +1,7 @@
 package org.mifosplatform.infrastructure.hooks;
 
 import org.mifosplatform.commands.handler.CommandHandlerWithHooks;
+import org.mifosplatform.infrastructure.codehooks.CommandHookType;
 import org.mifosplatform.infrastructure.core.api.JsonCommand;
 import org.mifosplatform.infrastructure.core.data.CommandProcessingResult;
 import org.springframework.stereotype.Component;
