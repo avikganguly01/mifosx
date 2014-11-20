@@ -5,6 +5,7 @@
  */
 package org.mifosplatform.commands.service;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.joda.time.DateTime;
@@ -23,9 +24,11 @@ import org.mifosplatform.infrastructure.core.service.ThreadLocalContextUtil;
 import org.mifosplatform.infrastructure.hooks.event.HookEvent;
 import org.mifosplatform.infrastructure.hooks.event.HookEventSource;
 import org.mifosplatform.infrastructure.security.service.PlatformSecurityContext;
+import org.mifosplatform.portfolio.fund.handler.CreateFundCommandHandler;
 import org.mifosplatform.useradministration.domain.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.annotation.AnnotationAwareOrderComparator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -127,6 +130,7 @@ public class SynchronousCommandProcessingService implements CommandProcessingSer
 
     private NewCommandSourceHandler findCommandHandler(final CommandWrapper wrapper) {
         NewCommandSourceHandler handler = null;
+        Map<String, ? extends NewCommandSourceHandler> createFundBeans = null;
 
         if (wrapper.isAccountTransferResource()) {
             if (wrapper.isCreate()) {
@@ -306,6 +310,8 @@ public class SynchronousCommandProcessingService implements CommandProcessingSer
         } else if (wrapper.isFundResource()) {
             if (wrapper.isCreate()) {
                 handler = this.applicationContext.getBean("createFundCommandHandler", NewCommandSourceHandler.class);
+                createFundBeans = this.applicationContext.getBeansOfType(CreateFundCommandHandler.class);
+                System.out.println(createFundBeans.size());
             } else if (wrapper.isUpdate()) {
                 handler = this.applicationContext.getBean("updateFundCommandHandler", NewCommandSourceHandler.class);
             } else {

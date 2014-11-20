@@ -1,0 +1,38 @@
+/**
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+package org.mifosplatform.portfolio.fund.handler;
+
+import org.mifosplatform.commands.handler.CommandHandlerWithHooks;
+import org.mifosplatform.infrastructure.codehooks.CommandHookType;
+import org.mifosplatform.infrastructure.core.api.JsonCommand;
+import org.mifosplatform.infrastructure.core.data.CommandProcessingResult;
+import org.mifosplatform.portfolio.fund.service.FundWritePlatformService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Order(Ordered.LOWEST_PRECEDENCE)
+@Service
+public class CreateFundCommandHandlerImpl extends CommandHandlerWithHooks
+                  implements CreateFundCommandHandler {
+
+    private final FundWritePlatformService writePlatformService;
+
+    @Autowired
+    public CreateFundCommandHandlerImpl(final FundWritePlatformService writePlatformService) {
+        super(CommandHookType.CreateFund);
+        this.writePlatformService = writePlatformService;
+    }
+
+    @Transactional
+    @Override
+    public CommandProcessingResult actualProcessCommand(final JsonCommand command) {
+
+        return this.writePlatformService.createFund(command);
+    }
+}
