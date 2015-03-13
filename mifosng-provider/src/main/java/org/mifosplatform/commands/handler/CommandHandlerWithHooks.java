@@ -41,9 +41,7 @@ public abstract class CommandHandlerWithHooks implements NewCommandSourceHandler
                 command.getClientId());
             }
         }
-
         CommandProcessingResult result = actualProcessCommand(command);
-
         for(ResolvedHook resolvedHook: hooks ) {
             resolvedHook.getHook().postHook(command,result);
         }

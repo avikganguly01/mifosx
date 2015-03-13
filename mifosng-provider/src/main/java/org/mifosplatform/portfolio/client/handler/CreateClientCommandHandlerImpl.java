@@ -3,33 +3,33 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-package org.mifosplatform.portfolio.fund.handler;
+package org.mifosplatform.portfolio.client.handler;
 
 import org.mifosplatform.commands.handler.CommandHandlerWithHooks;
 import org.mifosplatform.infrastructure.codehooks.CommandHookType;
 import org.mifosplatform.infrastructure.core.api.JsonCommand;
 import org.mifosplatform.infrastructure.core.data.CommandProcessingResult;
-import org.mifosplatform.portfolio.fund.service.FundWritePlatformService;
+import org.mifosplatform.portfolio.client.service.ClientWritePlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CreateFundCommandHandlerImpl extends CommandHandlerWithHooks
-                  implements CreateFundCommandHandler {
+public class CreateClientCommandHandlerImpl extends CommandHandlerWithHooks 
+				implements CreateClientCommandHandler {
 
-    private final FundWritePlatformService writePlatformService;
+    private final ClientWritePlatformService clientWritePlatformService;
 
     @Autowired
-    public CreateFundCommandHandlerImpl(final FundWritePlatformService writePlatformService) {
-        super(CommandHookType.CreateFund);
-        this.writePlatformService = writePlatformService;
+    public CreateClientCommandHandlerImpl(final ClientWritePlatformService clientWritePlatformService) {
+        super(CommandHookType.CreateClient);
+        this.clientWritePlatformService = clientWritePlatformService;
     }
 
     @Transactional
     @Override
     public CommandProcessingResult actualProcessCommand(final JsonCommand command) {
-        System.out.println("Actual");
-        return this.writePlatformService.createFund(command);
+
+        return this.clientWritePlatformService.createClient(command);
     }
 }
